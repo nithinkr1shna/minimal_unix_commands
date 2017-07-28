@@ -8,9 +8,7 @@
 #include<string.h>
 
 
-#define NORMAL "\x1b[0m"
-#define GREEN "\x1b[32m"
-#define BLUE "\x1b[34m"
+
 
 struct linux_dirent {
 
