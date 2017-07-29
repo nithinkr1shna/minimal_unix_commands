@@ -7,6 +7,7 @@
 #define SIZE 1024
 #define RED "\x1b[31m"
 #define WHITE "\x1b[37m"
+#define COLOR_RESET   "\x1b[0m"
 
 void walk_directory(char *str);
 int main(int argc, char **argv){
@@ -33,14 +34,14 @@ void walk_directory(char *str){
 
      
       if(dir->d_type != DT_DIR)
-	  printf("%s%s", WHITE, dir->d_name);
+	printf(WHITE "%-15s%s\n" RED ,"regular:", dir->d_name );
       else if(dir->d_type == DT_DIR && strcmp(dir->d_name,"..") != 0 && strcmp(dir->d_name,".") != 0){
-	printf("%s%s", RED, dir->d_name);
+	printf("\n%-15s%s%s\n","directory:", RED, dir->d_name);
 	  walk_directory(dir->d_name);
-	
+	  printf("\n");
       }
        
-      printf("\n");
+      //printf("\n");
     }
     closedir(d);
   }
